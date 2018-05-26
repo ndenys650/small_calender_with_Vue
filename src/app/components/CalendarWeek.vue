@@ -7,6 +7,7 @@
 </template>
 
 <script>
+// import data from store and child component
 import { store } from '../store.js';
 import CalendarDay from './CalendarDay.vue';
 
