@@ -1,31 +1,21 @@
 <template>
-  <div class="day column" @click="setActiveDay(day.id)">
-    <div class="day-banner has-text-centered">{{ day.abbvTitle }}</div>
-    <div class="day-details">
-      <div class="day-number">{{ day.id }}</div>
-      <CalendarEvent v-for="event in day.events"
-        :key="day.events.indexOf(event)"
-        :event="event"
-        :day="day"/>
+    <div class="day column">
+        <div class="day-banner has-text-centered">{{ day.abbvTitle }}</div>
+        <div class="day-details">
+            <div class="day-number">{{ day.id }}</div>
+            <CalendarEvent v-for="event in day.events" :key="day.events.indexOf(event)" :event="event" :day="day" />
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
-import { store } from '../store.js';
-import CalendarEvent from './CalendarEvent.vue';
-
+import CalendarEvent from './CalendarEvent.vue'
 export default {
-  name: 'CalendarDay',
-  props: ['day'],
-  methods: {
-    setActiveDay (dayId) {
-      store.setActiveDay(dayId);
+    name: 'CalendarDay',
+    props: ['day'],
+    components: {
+        CalendarEvent
     }
-  },
-  components: {
-    CalendarEvent
-  }
 }
 </script>
 
@@ -60,4 +50,5 @@ export default {
     border-right: 1px solid #8F8F8F;
   }
 }
+
 </style>
