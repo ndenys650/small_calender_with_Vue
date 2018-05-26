@@ -43,13 +43,22 @@ export const store = {
         const eventObj = this.getEventObj(dayId, originalEventDetails);
         eventObj.details = newEventDetails;
         eventObj.edit = false;
-      },
-      getEventObj (dayId, eventDetails) {
+    },
+    getEventObj (dayId, eventDetails) {
         const dayObj = this.state.seedData.find(
             day => day.id === dayId
-    );
-    return dayObj.events.find(
-      event => event.details === eventDetails
-    );
-  },
+        );
+        return dayObj.events.find(
+        event => event.details === eventDetails
+        );
+    },
+    deleteEvent (dayId, eventDetails) {
+        const dayObj = this.state.seedData.find(
+            day => day.id === dayId
+        );
+        const eventIndexToRemove = dayObj.events.findIndex(
+            event => event.details ===eventDetails
+        );
+        dayObj.events.splice(eventIndexToRemove, 1);
+    }
 }
